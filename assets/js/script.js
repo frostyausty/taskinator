@@ -292,6 +292,20 @@ var saveTasks = function() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+var loadTasks = function() {
+    //get task items from localStorage
+    var tasks = localStorage.getItem("tasks");
+    console.log(tasks);
+    
+    //converts tasks from the stringified format back into an array of objects
+    tasks = JSON.parse(tasks);
+    console.log(tasks);
+
+    //iterates through tasks array and creates task elements on the page from it 
+    //for (var i = 0; i < tasks.length; i++)
+    //console.log(tasks[i]);
+}
+
 formEl.addEventListener("submit", taskFormHandler);
 pageContentEL.addEventListener("click", taskButtonHandler);
 pageContentEL.addEventListener("change", taskStatusChangeHandler);
@@ -299,3 +313,5 @@ pageContentEL.addEventListener("dragstart", dragTaskHandler);
 pageContentEL.addEventListener("dragover", dropZoneDragHandler);
 pageContentEL.addEventListener("drop", dropTaskHandler);
 pageContentEL.addEventListener("dragleave", dragLeaveHandler);
+
+loadTasks();
